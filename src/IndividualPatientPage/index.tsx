@@ -9,7 +9,7 @@ import { Entry, Patient } from "../types";
 
 const IndividualPatientPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [{ patientDetails }, dispatch] = useStateValue();
+  const [{ diagnoses, patientDetails }, dispatch] = useStateValue();
 
   React.useEffect(() => {
     const fetchIndividualPatient = async () => {
@@ -49,7 +49,9 @@ const IndividualPatientPage: React.FC = () => {
                 <ul>
                   {entry.diagnosisCodes
                     ? entry.diagnosisCodes.map((code: string) => (
-                        <li key={code}>{code}</li>
+                        <li key={code}>
+                          {code} {diagnoses[code]?.name}
+                        </li>
                       ))
                     : null}
                 </ul>
