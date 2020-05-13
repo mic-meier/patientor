@@ -9,6 +9,14 @@ export type Action =
   | {
       type: "ADD_PATIENT";
       payload: Patient;
+    }
+  | {
+      type: "GET_PATIENT_DETAILS";
+      payload: Patient;
+    }
+  | {
+      type: "UPDATE_PATIENT";
+      payload: Patient;
     };
 
 export const reducer = (state: State, action: Action): State => {
@@ -21,16 +29,32 @@ export const reducer = (state: State, action: Action): State => {
             (memo, patient) => ({ ...memo, [patient.id]: patient }),
             {}
           ),
-          ...state.patients
-        }
+          ...state.patients,
+        },
       };
     case "ADD_PATIENT":
       return {
         ...state,
         patients: {
           ...state.patients,
-          [action.payload.id]: action.payload
-        }
+          [action.payload.id]: action.payload,
+        },
+      };
+    case "GET_PATIENT_DETAILS":
+      return {
+        ...state,
+        patientDetails: {
+          ...state.patientDetails,
+          [action.payload.id]: action.payload,
+        },
+      };
+    case "UPDATE_PATIENT":
+      return {
+        ...state,
+        patientDetails: {
+          ...state.patientDetails,
+          [action.payload.id]: action.payload,
+        },
       };
     default:
       return state;
