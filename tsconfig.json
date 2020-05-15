@@ -16,5 +16,5 @@
     "downlevelIteration": true,
     "allowJs": true
   },
-  "include": ["src", "src/IndividualPatientPage"]
+  "include": ["src"]
 }
