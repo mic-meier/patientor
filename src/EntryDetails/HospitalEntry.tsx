@@ -2,10 +2,12 @@ import React from "react";
 import { Diagnosis, HospitalEntryType } from "../types";
 import { Card, Icon } from "semantic-ui-react";
 
-const HospitalEntry: React.FC<{
+interface Props {
   entry: HospitalEntryType;
   diagnoses: { [id: string]: Diagnosis };
-}> = ({ entry, diagnoses }) => {
+}
+
+const HospitalEntry: React.FC<Props> = ({ entry, diagnoses }) => {
   return (
     <>
       <Card>

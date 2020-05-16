@@ -4,9 +4,11 @@ import { Card, Icon } from "semantic-ui-react";
 
 type HeartColors = "green" | "yellow" | "orange" | "red" | undefined;
 
-const HealthCheckEntry: React.FC<{
+interface Props {
   entry: HealthCheckEntryType;
-}> = ({ entry }) => {
+}
+
+const HealthCheckEntry: React.FC<Props> = ({ entry }) => {
   let color: HeartColors;
 
   switch (entry.healthCheckRating) {
